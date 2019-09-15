@@ -1,0 +1,18 @@
+#rules_image {
+  height: 265px;
+}
+
+#rules_button {
+  margin-bottom: 10px;
+}
+
+#rules_bullets {
+  display: inline-block;
+  text-align:left;
+}
+
+.rules_background {
+  background-color: lightgray;
+  width: 490px;
+  z-index: 1;
+}

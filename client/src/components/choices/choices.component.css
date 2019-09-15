@@ -1,0 +1,7 @@
+.choices_image {
+  height: 70px;
+}
+
+.button_padding > Button {
+  padding-right: 5px;
+}

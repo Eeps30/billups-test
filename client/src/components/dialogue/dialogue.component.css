@@ -1,0 +1,10 @@
+#dialogue_box {
+  height: 570px;
+  width: 520px;
+}
+
+#dialogue_image {
+  width: 520px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
