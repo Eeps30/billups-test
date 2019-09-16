@@ -84,7 +84,6 @@ const playerChoiceSpock = () => dispatch => {
       }
     })
     .then(response => {
-      console.log(response);
       if (response.data.results === 'win') {
         dispatch({
           type: ChoiceTypes.WIN_SPOCK
@@ -131,7 +130,6 @@ const apiChoice = () => dispatch => {
   axios
     .get('/choice')
     .then(response => {
-      console.log('random choice results: ', response);
       axios.post('/play', {
         params: {
           player: response.data.id

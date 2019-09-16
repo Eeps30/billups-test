@@ -4,7 +4,6 @@ var router = express.Router();
 
 router.post('/play', (req, res, next) => {
   const playerChoice = req.body.params.player
-  console.log(playerChoice);
   const options = {
     method: 'POST',
     uri: 'https://codechallenge.boohma.com:443/play',
