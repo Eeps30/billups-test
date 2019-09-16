@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { ChoiceTypes } from './choice.types';
 
-export const playerChoiceRock = () => dispatch => {
+const playerChoiceRock = () => dispatch => {
+  console.log('chose rock')
   axios
     .post('/play', {
       params: {
@@ -15,7 +16,7 @@ export const playerChoiceRock = () => dispatch => {
         });
       } else if (response.data.results === 'lose') {
         dispatch({
-          type: ChoiceTypes.LOOSE_ROCK
+          type: ChoiceTypes.LOSE_ROCK
         });
       } else {
         dispatch({
@@ -26,7 +27,30 @@ export const playerChoiceRock = () => dispatch => {
     .catch(err => console.error(err));
 };
 
-// export const playerChoicePaper = () => ({ type: 'CHOICE_PAPER' });
-// export const playerChoiceScissors = () => ({ type: 'CHOICE_SCISSORS' });
-// export const playerChoiceSpock = () => ({ type: 'CHOICE_SPOCK' });
-// export const playerChoiceLizard = () => ({ type: 'CHOICE_LIZARD' });
+const playerChoicePaper = () => dispatch => {
+  console.log('chose paper')
+  axios
+    .post('/play', {
+      params: {
+        player: 3
+      }
+    })
+    .then(response => {
+      if (response.data.results === 'win') {
+        dispatch({
+          type: ChoiceTypes.WIN_PAPER
+        });
+      } else if (response.data.results === 'lose') {
+        dispatch({
+          type: ChoiceTypes.LOSE_PAPER
+        });
+      } else {
+        dispatch({
+          type: ChoiceTypes.TIE_PAPER
+        });
+      }
+    })
+    .catch(err => console.error(err));
+};
+
+export { playerChoiceRock, playerChoicePaper }
