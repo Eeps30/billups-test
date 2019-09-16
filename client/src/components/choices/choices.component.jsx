@@ -3,8 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { connect } from 'react-redux';
 import { 
-  playerChoiceRock,
-  playerChoicePaper
+  playerChoiceRock, 
+  playerChoicePaper,
+  playerChoiceScissors,
+  playerChoiceSpock,
+  playerChoiceLizard
 } from '../../redux/choices/choice.action';
 import './choices.component.css';
 import Rock from './rock.png';
@@ -13,7 +16,13 @@ import Scissors from './scissors.png';
 import Spock from './spock.png';
 import Lizard from './lizard.png'
 
-const Choices = ({ playerChoiceRock }) => {
+const Choices = ({ 
+  playerChoiceRock, 
+  playerChoicePaper,
+  playerChoiceScissors,
+  playerChoiceSpock,
+  playerChoiceLizard
+}) => {
   return (
     <Container fluid className="d-inline-flex">
       <Button onClick={playerChoiceRock} className="m-1" variant="secondary">
@@ -24,15 +33,15 @@ const Choices = ({ playerChoiceRock }) => {
         <img className="choices_image" alt="paper" src={Paper} />
         <p>Paper</p>
       </Button>
-      <Button className="m-1" variant="secondary">
+      <Button onClick={playerChoiceScissors} className="m-1" variant="secondary">
         <img className="choices_image" alt="scissors" src={Scissors} />
         <p>Scissors</p>
       </Button>
-      <Button className="m-1" variant="secondary">
+      <Button onClick={playerChoiceSpock} className="m-1" variant="secondary">
         <img className="choices_image" alt="spock" src={Spock} />
         <p>Spock</p>
       </Button>
-      <Button className="m-1" variant="secondary">
+      <Button onClick={playerChoiceLizard} className="m-1" variant="secondary">
         <img className="choices_image" alt="lizard" src={Lizard} />
         <p>Lizard</p>
       </Button>
@@ -52,9 +61,9 @@ export default connect(
   null,
   { 
     playerChoiceRock,
-    playerChoicePaper
-    // playerChoiceScissors,
-    // playerChoiceSpock,
-    // playerChoiceLizard
+    playerChoicePaper,
+    playerChoiceScissors,
+    playerChoiceSpock,
+    playerChoiceLizard
   }
 )(Choices);

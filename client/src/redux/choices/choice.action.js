@@ -2,7 +2,6 @@ import axios from 'axios';
 import { ChoiceTypes } from './choice.types';
 
 const playerChoiceRock = () => dispatch => {
-  console.log('chose rock')
   axios
     .post('/play', {
       params: {
@@ -28,7 +27,6 @@ const playerChoiceRock = () => dispatch => {
 };
 
 const playerChoicePaper = () => dispatch => {
-  console.log('chose paper')
   axios
     .post('/play', {
       params: {
@@ -53,4 +51,85 @@ const playerChoicePaper = () => dispatch => {
     .catch(err => console.error(err));
 };
 
-export { playerChoiceRock, playerChoicePaper }
+const playerChoiceScissors = () => dispatch => {
+  axios
+    .post('/play', {
+      params: {
+        player: 4
+      }
+    })
+    .then(response => {
+      if (response.data.results === 'win') {
+        dispatch({
+          type: ChoiceTypes.WIN_SCISSORS
+        });
+      } else if (response.data.results === 'lose') {
+        dispatch({
+          type: ChoiceTypes.LOSE_SCISSORS
+        });
+      } else {
+        dispatch({
+          type: ChoiceTypes.TIE_SCISSORS
+        });
+      }
+    })
+    .catch(err => console.error(err));
+};
+
+const playerChoiceSpock = () => dispatch => {
+  axios
+    .post('/play', {
+      params: {
+        player: 5
+      }
+    })
+    .then(response => {
+      if (response.data.results === 'win') {
+        dispatch({
+          type: ChoiceTypes.WIN_SPOCK
+        });
+      } else if (response.data.results === 'lose') {
+        dispatch({
+          type: ChoiceTypes.LOSE_SPOCK
+        });
+      } else {
+        dispatch({
+          type: ChoiceTypes.TIE_SPOCK
+        });
+      }
+    })
+    .catch(err => console.error(err));
+};
+
+const playerChoiceLizard = () => dispatch => {
+  axios
+    .post('/play', {
+      params: {
+        player: 6
+      }
+    })
+    .then(response => {
+      if (response.data.results === 'win') {
+        dispatch({
+          type: ChoiceTypes.WIN_LIZARD
+        });
+      } else if (response.data.results === 'lose') {
+        dispatch({
+          type: ChoiceTypes.LOSE_LIZARD
+        });
+      } else {
+        dispatch({
+          type: ChoiceTypes.TIE_LIZARD
+        });
+      }
+    })
+    .catch(err => console.error(err));
+};
+
+export { 
+  playerChoiceRock, 
+  playerChoicePaper,
+  playerChoiceScissors,
+  playerChoiceSpock,
+  playerChoiceLizard 
+}
