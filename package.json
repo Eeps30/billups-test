@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-dependencies": "npm install && npm install --prefix client && npm install --prefix server",
+    "install-dep": "npm install && npm install --prefix client && npm install --prefix server",
     "start": "concurrently \"npm run start --prefix server\" \"npm run start --prefix client\""
   },
   "keywords": [],
