@@ -80,10 +80,11 @@ const playerChoiceSpock = () => dispatch => {
   axios
     .post('/play', {
       params: {
-        player: 5
+        player: 6
       }
     })
     .then(response => {
+      console.log(response);
       if (response.data.results === 'win') {
         dispatch({
           type: ChoiceTypes.WIN_SPOCK
@@ -105,7 +106,7 @@ const playerChoiceLizard = () => dispatch => {
   axios
     .post('/play', {
       params: {
-        player: 6
+        player: 5
       }
     })
     .then(response => {
@@ -126,10 +127,47 @@ const playerChoiceLizard = () => dispatch => {
     .catch(err => console.error(err));
 };
 
-export { 
+const apiChoice = () => dispatch => {
+  axios
+    .get('/choice')
+    .then(response => {
+      console.log('random choice results: ', response);
+      axios.post('/play', {
+        params: {
+          player: response.data.id
+        }
+      })
+      .then(response => {
+        if (response.data.results === 'win') {
+          dispatch({
+            type: ChoiceTypes.WIN_ROCK
+          })
+        } else if (response.data.results === 'lose') {
+          dispatch({
+            type: ChoiceTypes.LOSE_ROCK
+          })
+        } else {
+          dispatch({
+            type: ChoiceTypes.TIE_ROCK
+          })
+        }
+      })
+    })
+    .catch(err => console.error(err));
+}
+
+const clearScoreBoard = () => dispatch => {
+  dispatch({
+    type: ChoiceTypes.CLEAR_SCOREBOARD
+  })
+}
+
+export {
   playerChoiceRock, 
   playerChoicePaper,
   playerChoiceScissors,
   playerChoiceSpock,
-  playerChoiceLizard 
+  playerChoiceLizard,
+  apiChoice,
+  clearScoreBoard
 }

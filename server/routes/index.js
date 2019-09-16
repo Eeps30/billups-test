@@ -2,13 +2,6 @@ var express = require('express');
 var rp = require('request-promise');
 var router = express.Router();
 
-router.get('/choice', (req, res, next) => {
-  rp('http://codechallenge.boohma.com/choice')
-    .then((response) => {
-      res.send(response);
-    })
-});
-
 router.post('/play', (req, res, next) => {
   const playerChoice = req.body.params.player
   console.log(playerChoice);
@@ -29,5 +22,21 @@ router.post('/play', (req, res, next) => {
       res.send(err);
     })
 });
+
+router.get('/choice', (req, res, next) => {
+  const options = {
+    method: 'GET',
+    uri: 'https://codechallenge.boohma.com/choice',
+    json: true
+  }
+
+  rp(options)
+    .then((response) => {
+      res.send(response)
+    })
+    .catch((err) => {
+      res.send(err)
+    })
+})
 
 module.exports = router;

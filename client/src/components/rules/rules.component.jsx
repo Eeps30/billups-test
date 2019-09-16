@@ -10,7 +10,7 @@ const Rules = () => {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid id="margin_top">
         <Button
           id="rules_button"
           onClick={() => setOpen(!open)}

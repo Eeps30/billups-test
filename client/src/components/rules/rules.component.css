@@ -11,6 +11,10 @@
   text-align:left;
 }
 
+#margin_top {
+  margin-top: -35px;
+}
+
 .rules_background {
   background-color: lightgray;
   width: 490px;

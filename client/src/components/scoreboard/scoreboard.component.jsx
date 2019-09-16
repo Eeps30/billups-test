@@ -2,11 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import { clearScoreBoard } from '../../redux/choices/choice.action';
 import './scoreboard.component.css';
 
 const ScoreBoard = ({
   playerScore,
-  computerScore
+  computerScore,
+  clearScoreBoard
 }) => {
   return (
     <Container fluid>
@@ -21,6 +24,7 @@ const ScoreBoard = ({
             Computer:
             {computerScore}
           </Card.Text>
+          <Button onClick={clearScoreBoard}>Clear Score</Button>
         </Card.Body>
       </Card>
     </Container>
@@ -37,4 +41,9 @@ const mapStateToProps = ({
   computerScore
 })
 
-export default connect(mapStateToProps, null)(ScoreBoard);
+export default connect(
+  mapStateToProps,
+  { 
+    clearScoreBoard
+  }
+)(ScoreBoard);
